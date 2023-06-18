@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_auth/route.dart';
 
 void main() => runApp(const MyApp());
 
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Perpustakaan',
-      theme: ThemeData(
+      // onGenerateRoute: RouteGenerator.generateRoute,
+      theme: ThemeData( 
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: Colors.white,
           elevatedButtonTheme: ElevatedButtonThemeData(
