@@ -7,9 +7,10 @@ class Background extends StatelessWidget {
     required this.child,
     this.topImage = "assets/images/main_top.png",
     this.bottomImage = "assets/images/login_bottom.png",
+    this.logo = "assets/images/logo_1.png",
   }) : super(key: key);
 
-  final String topImage, bottomImage;
+  final String topImage, bottomImage, logo;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,26 @@ class Background extends StatelessWidget {
             //   right: 0,
             //   child: Image.asset(bottomImage, width: 120),
             // ),
+                        Positioned(
+              top: 10,
+              left: 10,
+              child: Row(
+                children: [
+                  Image.asset(
+                    logo,
+                    width: 60,
+                  ),
+                  Text(
+                  'Reading Zone',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                ],
+              ),
+            ),
             SafeArea(child: child),
           ],
         ),
