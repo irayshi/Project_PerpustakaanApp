@@ -35,7 +35,7 @@ class Background extends StatelessWidget {
             //   right: 0,
             //   child: Image.asset(bottomImage, width: 120),
             // ),
-                        Positioned(
+            Positioned(
               top: 10,
               left: 10,
               child: Row(
@@ -45,17 +45,32 @@ class Background extends StatelessWidget {
                     width: 60,
                   ),
                   Text(
-                  'Reading Zone',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    'Reading Zone',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
                   ),
-                ),
                 ],
               ),
             ),
-            SafeArea(child: child),
+            Visibility(
+              visible: Navigator.of(context).canPop(),
+              child: Positioned(
+                top: 20,
+                right: 20,
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    // icon: (buat kondisi kalau udah login ubah icon jadi logout) ? Icon(Icons.arrow_back) : Icon(Icons.logout)),
+                    icon: Icon(Icons.arrow_back)),
+              ),
+            ),
+            Container(
+                margin: EdgeInsets.symmetric(vertical: 80),
+                child: SafeArea(child: child)),
           ],
         ),
       ),

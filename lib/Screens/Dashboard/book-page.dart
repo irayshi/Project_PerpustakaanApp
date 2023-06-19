@@ -4,7 +4,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../components/background.dart';
 
 class BookPage extends StatefulWidget {
-  const BookPage({Key? key}) : super(key: key);
+  const BookPage({Key? key, required this.buku}) : super(key: key);
+  final String buku;
 
   @override
   State<BookPage> createState() => _BookPageState();
@@ -20,12 +21,23 @@ class _BookPageState extends State<BookPage> {
         padding: const EdgeInsets.all(30.0),
         child: Column(
           children: [
-            Text(
-              "Buku Teknik Informatika",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
+            Card(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              ),
+              elevation: 4,
+              color: kPrimaryColor,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  widget.buku.toString(),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryLightColor,
+                    fontSize: 24,
+                  ),
+                ),
               ),
             ),
             SizedBox(
@@ -33,12 +45,15 @@ class _BookPageState extends State<BookPage> {
             ),
             TextField(
               textInputAction: TextInputAction.done,
-              cursorColor: kPrimaryColor,
+              style: TextStyle(color: kPrimaryLightColor),
+              cursorColor: kPrimaryLightColor,
               decoration: InputDecoration(
-                hintText: "Search",
+                fillColor: kPrimaryColor,
+                hintText: "Search books...",
+                hintStyle: TextStyle(color: kPrimaryLightColor),
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(10),
-                  child: Icon(Icons.search),
+                  child: Icon(Icons.search, color: kPrimaryLightColor),
                 ),
               ),
               onChanged: (value) {
@@ -47,36 +62,74 @@ class _BookPageState extends State<BookPage> {
                 });
               },
             ),
-            StaggeredGrid.count(crossAxisCount: 2, children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 5.0,
-                  vertical: 10.0,
-                ),
-                child: SizedBox(
-                  width: 120.0,
+            SizedBox(
+              height: 20,
+            ),
+            GridView.builder(
+              shrinkWrap: true,
+              itemCount: 4,
+              itemBuilder: (BuildContext context, index) {
+                return InkWell(
+                  onTap: () {},
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                   child: Card(
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                    ),
-                    elevation: 4.0,
-                    child: InkWell(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(10.0)),
-                      onTap: () {},
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(10.0),
-                        ),
-                        child: Image.asset(
-                          'assets/images/book1.png',
-                        ),
+                    child: Container(
+                      height: 290,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0)),
+                      margin: EdgeInsets.all(5),
+                      child: Stack(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Expanded(
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(10.0),
+                                  ),
+                                  child: Image.asset(
+                                    books[index],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                'Title',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    'Subtitle',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                ),
+                );
+              },
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1.0,
+                crossAxisSpacing: 0.0,
+                mainAxisSpacing: 5,
+                mainAxisExtent: 230,
               ),
-            ]),
+            ),
           ],
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../Screens/Dashboard/home_screen.dart';
+import 'package:flutter_auth/Screens/Dashboard/layout.dart';
 
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants.dart';
@@ -48,11 +48,11 @@ class LoginForm extends StatelessWidget {
             tag: "login_btn",
             child: ElevatedButton(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return MyHomePage();
+                      return Layout();
                     },
                   ),
                 );
