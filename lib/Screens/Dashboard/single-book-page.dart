@@ -62,7 +62,7 @@ class _SingleBookPageState extends State<SingleBookPage> {
                                 child: Stack(
                                   children: [
                                     Image.asset(
-                                      books[0],
+                                      widget.buku,
                                     ),
                                     Positioned(
                                       top: 0,
@@ -276,6 +276,9 @@ class _SingleBookPageState extends State<SingleBookPage> {
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 10,
+                )
               ],
             ),
           ),

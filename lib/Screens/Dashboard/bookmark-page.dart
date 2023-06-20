@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Dashboard/single-book-page.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../components/background.dart';
 
-class BookPage extends StatefulWidget {
-  const BookPage({Key? key, required this.buku}) : super(key: key);
-  final String buku;
+class BookmarkPage extends StatefulWidget {
+  const BookmarkPage({Key? key}) : super(key: key);
 
   @override
-  State<BookPage> createState() => _BookPageState();
+  State<BookmarkPage> createState() => _BookmarkPageState();
 }
 
-class _BookPageState extends State<BookPage> {
+class _BookmarkPageState extends State<BookmarkPage> {
   String searchValue = '';
+  bool isIconHovered = false;
   @override
   Widget build(BuildContext context) {
     return Background(
@@ -30,7 +31,7 @@ class _BookPageState extends State<BookPage> {
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  widget.buku,
+                  'Bookmarks',
                   // widget.buku.toString(),
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -85,7 +86,9 @@ class _BookPageState extends State<BookPage> {
                   },
                   borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                   child: Card(
+                    // color: kPrimaryColor,
                     child: Container(
+                      padding: EdgeInsets.all(10),
                       height: 290,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0)),
@@ -93,15 +96,46 @@ class _BookPageState extends State<BookPage> {
                       child: Stack(
                         children: [
                           Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Expanded(
                                 child: ClipRRect(
                                   borderRadius: const BorderRadius.all(
-                                    Radius.circular(10.0),
+                                    Radius.circular(010.0),
                                   ),
-                                  child: Image.asset(
-                                    books[index],
+                                  child: Stack(
+                                    children: [
+                                      Image.asset(
+                                        books[index],
+                                      ),
+                                      Positioned(
+                                        top: 0,
+                                        right: 0,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(20),
+                                                  bottomRight:
+                                                      Radius.circular(20)),
+                                              color: kPrimaryColor),
+                                          child: InkWell(
+                                            onHover: (value) {
+                                              setState(() {
+                                                isIconHovered = value;
+                                              });
+                                            },
+                                            child: IconButton(
+                                                onPressed: () {},
+                                                icon: Icon(
+                                                  Icons
+                                                      .bookmark_remove_outlined,
+                                                  color: Colors.white,
+                                                  size: 20,
+                                                )),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -115,16 +149,13 @@ class _BookPageState extends State<BookPage> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    'Subtitle',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ],
+                              Text(
+                                'Subtitle',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
                               )
                             ],
                           ),

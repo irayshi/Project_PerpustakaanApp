@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Dashboard/book-page.dart';
+import 'package:flutter_auth/Screens/Dashboard/profile-page.dart';
 import 'package:flutter_auth/components/background.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../constants.dart';
@@ -72,7 +73,16 @@ class _HomePageState extends State<HomePage> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return ProfilePage();
+                                        },
+                                      ),
+                                    );
+                                  },
                                   icon: SvgPicture.asset(
                                     "assets/icons/edit.svg",
                                     width: 20,

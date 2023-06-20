@@ -1,6 +1,6 @@
+import 'package:flutter_auth/Screens/Dashboard/bookmark-page.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter/material.dart';
-import 'profile-page.dart';
 import 'home-page.dart';
 
 class Layout extends StatefulWidget {
@@ -12,7 +12,7 @@ class Layout extends StatefulWidget {
 
 class _LayoutState extends State<Layout> {
   int currentIndex = 0;
-  late List<Widget> _children = [HomePage(), ProfilePage()];
+  late List<Widget> _children = [HomePage(), BookmarkPage()];
 
   void initState() {
     super.initState();
@@ -35,7 +35,7 @@ class _LayoutState extends State<Layout> {
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(AssetImage('assets/icons/bookmark.png')),
-            label: 'Bookmark',
+            label: 'Bookmarks',
           ),
         ],
         onTap: (index) {

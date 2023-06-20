@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/components/background.dart';
+import 'package:flutter_auth/constants.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -16,111 +18,132 @@ class _ProfilePageState extends State<ProfilePage> {
       child: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Container(
-                  width: 80.0,
-                  height: 80.0,
-                  decoration: BoxDecoration(
-                    color: Color(0XFF00B686),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 8,
-                          spreadRadius: 3)
-                    ],
-                    border: Border.all(
-                      width: 1.5,
-                      color: Colors.white,
+            SizedBox(
+              child: Row(
+                children: [
+                  Container(
+                    width: 80.0,
+                    height: 80.0,
+                    decoration: BoxDecoration(
+                      color: Color(0X803B98),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 8,
+                            spreadRadius: 3)
+                      ],
+                      border: Border.all(
+                        width: 1.5,
+                        color: Colors.white,
+                      ),
+                      borderRadius: BorderRadius.circular(40.0),
                     ),
-                    borderRadius: BorderRadius.circular(40.0),
+                    padding: EdgeInsets.all(5),
+                    child: CircleAvatar(
+                      backgroundImage:
+                          AssetImage('assets/images/foto-profile.png'),
+                    ),
                   ),
-                  padding: EdgeInsets.all(5),
-                  child: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "https://images.pexels.com/photos/2167673/pexels-photo-2167673.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"),
+                  SizedBox(
+                    width: 20,
                   ),
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                SizedBox(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Hai!',
+                  Flexible(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Material(
+                          type: MaterialType.transparency,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Hai!',
+                                style: TextStyle(
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Material(
+                          type: MaterialType.transparency,
+                          child: Text(
+                            'Salsa Tulkaromah',
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 18.0,
                               fontWeight: FontWeight.bold,
                             ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          IconButton(onPressed: () {}, icon: Icon(Icons.edit))
-                        ],
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Text(
-                          'Salsa Tulkaromah',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          maxLines: 2,
-                          // overflow: TextOverflow.fade,
                         ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Full Name',
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Username',
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextFormField(
-              obscureText: true,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Password',
+                ],
               ),
             ),
             SizedBox(
               height: 30,
             ),
-            Row(
-              children: [
-                TextButton(onPressed: () {}, child: Text('Update')),
-                SizedBox(
-                  width: 10,
+            TextFormField(
+              keyboardType: TextInputType.text,
+              textInputAction: TextInputAction.next,
+              cursorColor: kPrimaryColor,
+              onSaved: (email) {},
+              decoration: InputDecoration(
+                hintText: "Full Name",
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(defaultPadding),
+                  child: Icon(Icons.people_alt_outlined),
                 ),
-                TextButton(onPressed: () {}, child: Text('Logout'))
-              ],
-            )
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              keyboardType: TextInputType.text,
+              textInputAction: TextInputAction.next,
+              cursorColor: kPrimaryColor,
+              onSaved: (email) {},
+              decoration: InputDecoration(
+                hintText: "Username",
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(defaultPadding),
+                  child: Icon(Icons.person),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              textInputAction: TextInputAction.done,
+              obscureText: true,
+              cursorColor: kPrimaryColor,
+              decoration: InputDecoration(
+                hintText: "Password",
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(defaultPadding),
+                  child: Icon(Icons.lock),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            SizedBox(
+              width: 150,
+              child: ElevatedButton(onPressed: () {}, child: Text('Update')),
+            ),
           ],
         ),
       ),
