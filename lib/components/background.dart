@@ -69,7 +69,7 @@ class Background extends StatelessWidget {
               ),
             ),
             Container(
-                margin: EdgeInsets.symmetric(vertical: 80),
+                margin: EdgeInsets.only(top: 80),
                 child: SafeArea(child: child)),
           ],
         ),

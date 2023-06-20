@@ -1,5 +1,4 @@
 import 'package:flutter_auth/constants.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'profile-page.dart';
 import 'home-page.dart';

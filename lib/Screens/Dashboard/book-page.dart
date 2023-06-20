@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Dashboard/single-book-page.dart';
 import 'package:flutter_auth/constants.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../components/background.dart';
 
 class BookPage extends StatefulWidget {
@@ -70,7 +70,18 @@ class _BookPageState extends State<BookPage> {
               itemCount: 4,
               itemBuilder: (BuildContext context, index) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return SingleBookPage(
+                            buku: name_category[index],
+                          );
+                        },
+                      ),
+                    );
+                  },
                   borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                   child: Card(
                     child: Container(

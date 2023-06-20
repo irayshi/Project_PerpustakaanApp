@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
-import 'package:flutter_auth/route.dart';
 
 void main() => runApp(const MyApp());
 
@@ -15,13 +14,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Perpustakaan',
       // onGenerateRoute: RouteGenerator.generateRoute,
-      theme: ThemeData( 
+      theme: ThemeData(
           primaryColor: kPrimaryColor,
           scaffoldBackgroundColor: Colors.white,
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               elevation: 0,
-              primary: kPrimaryColor,
+              backgroundColor: kPrimaryColor,
               shape: const StadiumBorder(),
               maximumSize: const Size(double.infinity, 56),
               minimumSize: const Size(double.infinity, 56),
